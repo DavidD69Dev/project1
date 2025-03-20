@@ -31,12 +31,49 @@
 
     <h1>Les meilleures adresses pour manger </h1>
 
+
+    <section class="filters">
+        <div class="filter-box">
+            <h3>Catégorie de resto</h3>
+            <ul>
+                <li><input type="radio" name="category" value="Tacos"> Tacos</li>
+                <li><input type="radio" name="category" value="Pizza"> Pizza</li>
+                <li><input type="radio" name="category" value="Boulangerie"> Boulangerie</li>
+                <li><input type="radio" name="category" value="Sushi"> Sushi</li>
+                <li><input type="radio" name="category" value="Brasserie"> Brasserie</li>
+            </ul>
+        </div>
+        <div class="filter-box">
+            <h3>Prix</h3>
+            <ul>
+                <li><input type="radio" name="price" value="5€ - 10€"> 5€ - 10€</li>
+                <li><input type="radio" name="price" value="11€ - 15€"> 11€ - 15€</li>
+                <li><input type="radio" name="price" value="16€ - 20€"> 16€ - 20€</li>
+                <li><input type="radio" name="price" value="21€ - 25€"> 21€ - 25€</li>
+                <li><input type="radio" name="price" value="26€+"> 26€+</li>
+            </ul>
+        </div>
+        <div class="filter-box">
+            <h3>Classement</h3>
+            <ul>
+                <li><input type="radio" name="rating" value="⭐"> ⭐</li>
+                <li><input type="radio" name="rating" value="⭐⭐"> ⭐⭐</li>
+                <li><input type="radio" name="rating" value="⭐⭐⭐"> ⭐⭐⭐</li>
+                <li><input type="radio" name="rating" value="⭐⭐⭐⭐"> ⭐⭐⭐⭐</li>
+                <li><input type="radio" name="rating" value="⭐⭐⭐⭐⭐"> ⭐⭐⭐⭐⭐</li>
+            </ul>
+        </div>
+    </section>
+
+    </header>
+    <!--<h1>Les meilleurs adresses pour manger </h1>-->
     <main>
         <!--Vignette-->
         <section class="container">
             <!--Vignette desktop/mobile-->
             <section class="thumbnail">
-                <img src="aurelien-lemasson-theobald-x00CzBt4Dfk-unsplash.jpg" alt="Déliciseuse pizza">
+                <img class="imgVignette" src="aurelien-lemasson-theobald-x00CzBt4Dfk-unsplash.jpg"
+                    alt="Déliciseuse pizza">
                 <h3 class="resto-type">Boulangerie</h3>
                 <h4 class="resto-stars">5
                     <svg class="resto-stars" id="resto-stars-WCS" viewBox="0 0 370 270.2">
@@ -68,7 +105,7 @@
                 <p class="resto-name ">Chez Micheline</p>
                 <p class="resto-adress ">14 Pl. Carnot, 69002 Lyon</p>
                 <p class="resto-phone ">06.74.15.92.01</p>
-                <p class="resto-price ">12€-26€</p>
+                <p class="resto-price ">12€ - 26€</p>
             </section>
             <!--Vignette pop-up mobile-->
             <section id="thumbnail-popup">
@@ -104,7 +141,7 @@
                 <p class="resto-name-popup ">Chez Micheline</p>
                 <p class="resto-adress-popup ">14 Pl. Carnot, 69002 Lyon</p>
                 <p class="resto-phone-popup ">06.74.15.92.01</p>
-                <p class="resto-price-popup ">12€-26€</p>
+                <p class="resto-price-popup ">12€ - 26€</p>
 
                 <svg id="cancel" viewBox="0 0 48 48">
                     <path class="cancel"
@@ -156,19 +193,19 @@
                 <h5 class="resto-advice-popup" id="resto-advice">Avis ▾</h5>
 
             </section>
-            <fieldset id="advices-popup advices">
+            <!--<fieldset id="advices-popup advices">
                 <legend> laisser un commentaire</legend>
                 <textarea name="commentaire" id="txt-advice" placeholder="Écrivez votre commentaire ici"></textarea>
                 <button type="submit">Envoyer </button>
-            </fieldset>
+            </fieldset>-->
 
         </section>
 
     </main>
-
+    <script src="index.js"></script>
 </body>
 <footer>
-
+    <p>@ WildCodeSchool</p>
 </footer>
 
 </html>
