@@ -140,6 +140,9 @@ img{
         background-color: var(--second);
         transition: opacity 0.7s;
     }
+    .thumbnail-popup{
+        margin: auto;
+    }
     .thumbnail-popup-top{
         display: flex;
         flex-direction: column;
@@ -157,6 +160,8 @@ img{
         display: grid;
         grid-template-columns: repeat(3, 1fr) ;
         grid-template-rows: repeat(8, 1fr);
+        margin: 20px 0;
+
         width: 100%;
         height: 40px;
     }
