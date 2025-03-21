@@ -38,7 +38,7 @@
 
 
 
-const thumbnail=document.querySelector(".thumbnail")
+/*const thumbnail=document.querySelector(".thumbnail")
 const thumbnailPopup=document.querySelector(".thumbnail-popup")
 
 thumbnail.addEventListener("click", () => {
@@ -64,4 +64,4 @@ cancel.addEventListener("click", () =>{
         thumbnail.style.display="flex"
     }else{thumbnail.style.display="flex"}
     }
-)
+)*/
