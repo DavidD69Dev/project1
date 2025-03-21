@@ -243,7 +243,12 @@ header {
     .logo {
         width: 75px;
         transform: rotate(-10deg);
+        
     }
+
+   
+
+   
 
     .brandName {
         font-size: 5rem;

@@ -35,7 +35,7 @@
     <section class="filters">
         <div class="filter-box">
             <h3>Catégorie de resto</h3>
-            <ul>
+            <ul id="categoryList">
                 <li><input type="radio" name="category" value="Tacos"> Tacos</li>
                 <li><input type="radio" name="category" value="Pizza"> Pizza</li>
                 <li><input type="radio" name="category" value="Boulangerie"> Boulangerie</li>
@@ -45,17 +45,21 @@
         </div>
         <div class="filter-box">
             <h3>Prix</h3>
-            <ul>
-                <li><input type="radio" name="price" value="5€ - 10€"> 5€ - 10€</li>
-                <li><input type="radio" name="price" value="11€ - 15€"> 11€ - 15€</li>
-                <li><input type="radio" name="price" value="16€ - 20€"> 16€ - 20€</li>
-                <li><input type="radio" name="price" value="21€ - 25€"> 21€ - 25€</li>
-                <li><input type="radio" name="price" value="26€+"> 26€+</li>
+            <ul id="priceList">
+                <li><input type="radio" name="price" value="5€ - 10€" data-price-min="5" data-price-max="10"> 5€ - 10€
+                </li>
+                <li><input type="radio" name="price" value="11€ - 15€" data-price-min="11" data-price-max="15"> 11€ -
+                    15€</li>
+                <li><input type="radio" name="price" value="16€ - 20€" data-price-min="16" data-price-max="20"> 16€ -
+                    20€</li>
+                <li><input type="radio" name="price" value="21€ - 25€" data-price-min="21" data-price-max="25"> 21€ -
+                    25€</li>
+                <li><input type="radio" name="price" value="26€+" data-price-min="26"> 26€+</li>
             </ul>
         </div>
         <div class="filter-box">
             <h3>Classement</h3>
-            <ul>
+            <ul id="ratingList">
                 <li><input type="radio" name="rating" value="⭐"> ⭐</li>
                 <li><input type="radio" name="rating" value="⭐⭐"> ⭐⭐</li>
                 <li><input type="radio" name="rating" value="⭐⭐⭐"> ⭐⭐⭐</li>
@@ -105,7 +109,7 @@
                 <p class="resto-name ">Chez Micheline</p>
                 <p class="resto-adress ">14 Pl. Carnot, 69002 Lyon</p>
                 <p class="resto-phone ">06.74.15.92.01</p>
-                <p class="resto-price ">12€ - 26€</p>
+                <p class="resto-price " data-price-min="12" data-price-max="26">12€ - 26€</p>
             </section>
             <!--Vignette pop-up mobile-->
             <section id="thumbnail-popup">
