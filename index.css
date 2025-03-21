@@ -16,18 +16,35 @@ body{
     font-style: normal;
     background-color: var(--second);
     font-optical-sizing:auto;
+    
 }
 /* DÉBUT DESKTOP / MOBILE*/
+.content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    justify-content: center;
+}
 .thumbnail{
-    display: grid; /*Display Grid pour faire apparaitre*/
+    display: flex; /*Display flex pour faire apparaitre*/
+    flex-direction: column;
     margin:auto;
-    grid-template-columns: repeat(3, 1fr) ;
-    grid-template-rows: repeat(6, 1fr);
     width: 350px;
     height: 350px;
+    margin: 20px;
     background-color: var(--second);
     border-radius: 15px;
-    box-shadow: 3px 0 5px #627C85;
+    transition:.35s;
+    &:hover{
+    box-shadow: 0 0 10px #627C85;
+
+    }
+
+}
+.thumbnail-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) ;
+    grid-template-rows: repeat(4, 1fr);
 
 }
 h3, h4, p{
@@ -38,75 +55,52 @@ h3, h4, p{
     object-fit: cover;
     width: 100%;
     height: 170px;
-    margin: auto;
-    grid-column: 1/ span 3;
-    grid-row:1 ;
+    margin: 0px auto 20px;
     border-radius: 15px 15px 0 0;
-    margin:0;
     }
 .resto-type{
-    grid-column:1 ;
-    grid-row:2 ;
+    grid-column:1 / span 2 ;
+    grid-row:1 ;
 }
 .resto-stars{
     display: flex;
     justify-content: end;
     margin: 0;
     padding:0 10px;
+    grid-column:3 ;
+    grid-row:1 ;
+}
+.resto-stars-WCS{
+    background-image: url("blackWildLogo.png");
     background-size: contain;
     background-repeat: no-repeat;
-    grid-column:3 ;
-    grid-row:2 ;
-}
-#resto-stars-WCS{
-    padding:0;
+    width: 16px;
+    height: 16px;
     margin: 3px 5px;
-    width: auto;
-    height: 14px;
 }
-
-/*SVG*/
-.st0 {
-    fill: none;
-}
-
-.st1 {
-    fill: #333;
-}
-
-.st2 {
-    clip-path: url(#clippath);
-}
-/*SVG*/
-
 .resto-name{
     grid-column:1 / span 2 ;
-    grid-row:3 ;
+    grid-row:2;
 }
 .resto-adress{
-    grid-column:1 ;
-    grid-row:4  ;
+    grid-column:1;
+    grid-row:3;
+    height: 20px;
 }
 .resto-phone{
-    grid-column:1 ;
-    grid-row: 5;
+    grid-column:1;
+    grid-row:4;
+    margin: 15px 0 0;
 }
 .resto-price{
-    grid-column:3 ;
-    grid-row: 5;
+    grid-column:3;
+    grid-row:4;
     display: flex;
     justify-content: end;
     padding:0 10px;
 }
-#cancel {
-    fill: #000;
-    display: flex;
-    justify-items: start;
-    align-items: start;
-    width:36px;
-  }
-#advices{
-    display: flex;
+.advices{
+    display: none;
 }
 .resto-pic{
     display: flex;
@@ -121,39 +115,71 @@ h3, h4, p{
     grid-column:1 ;
     grid-row: 8;
 }
-#thumbnail-popup{
+.thumbnail-down{
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+.thumbnail-popup{
     display: none;
+
 }
 /*FIN DU DESKTOP/MOBILE */
 
 /* POP-UP - DÉBUT*/
 
 @media screen and (max-width:800px) {
-    #thumbnail-popup{
-        display: grid;/* grid pour faire apparaitre / none pour ne pas afficher*/
+    .content{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    
+    .thumbnail-popup{
+        display: none;/* flex pour faire apparaitre / none pour ne pas afficher*/
+        flex-direction: column;
+        background-color: var(--second);
+        transition: opacity 0.7s;
+    }
+    .thumbnail-popup{
+        margin: auto;
+    }
+    .thumbnail-popup-top{
+        display: flex;
+        flex-direction: column;
+    }
+    .cancel {
+        position: absolute;
+        right: 5%;
+        top: 1%;
+        fill: #000;
+        margin: auto;
+        display: flex;
+        width:36px;
+      }
+    .thumbnail-popup-grid{
+        display: grid;
         grid-template-columns: repeat(3, 1fr) ;
         grid-template-rows: repeat(8, 1fr);
+        margin: 20px 0;
+
         width: 100%;
-        height: 20px;
-        background-color: var(--second);
+        height: 40px;
     }
-    #img-popup{
+    .img-popup{
         object-fit: cover;
         width: 100%;
         height: 200px;
-        grid-column: 1/ span 3 ;
-        grid-row: 1;
+        margin:0;
+        margin:0 0 30px 0
     }
-    #map {
+    /*#map {
         width: 100%;
         height: 200px;
-        grid-column: 1/ span 3 ;
-        grid-row: 2;
-        /*margin:0 0 30px 0;*/
+        margin:0 0 30px 0;*/
     }
     .resto-type-popup{
         grid-column:1 / span 2;
-        grid-row:3 ;
+        grid-row:1 ;
         margin: 0 0 35px;
     }
     .resto-stars-popup{
@@ -164,9 +190,9 @@ h3, h4, p{
         background-size: contain;
         background-repeat: no-repeat;
         grid-column: 3 ;
-        grid-row:3 ;
+        grid-row:1 ;
     }
-    #resto-stars-WCS-popup{
+    .resto-stars-WCS-popup{
         padding:0;
         margin: 3px 5px;
         width: auto;
@@ -174,19 +200,22 @@ h3, h4, p{
     }
     .resto-name-popup{
         grid-column:1 / span 2 ;
-        grid-row:4 ;
+        grid-row:2 ;
+        padding: 10px;
     }
     .resto-adress-popup{
         grid-column:1 / span 2 ;
-        grid-row:5 ;
+        grid-row:3;
+        padding: 10px;
     }
     .resto-phone-popup{
         grid-column:1 ;
-        grid-row: 6;
+        grid-row: 4;
+        padding: 10px;
     }
     .resto-price-popup{
         grid-column:3 ;
-        grid-row: 6;
+        grid-row: 4;
         display: flex;
         justify-content: center;
         padding:0 10px;
