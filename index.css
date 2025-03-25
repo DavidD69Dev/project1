@@ -72,3 +72,28 @@ label {
     1rem "Fira Sans",
     sans-serif;
 }
+
+
+.logo  {
+  background-color: rebeccapurple;
+  border-radius: 10 px;
+  width: 50px;
+  height: 100 px;
+
+}
+
+.logo hover   {
+   animation-name : rotate;
+   animation-duration : 0.7 s;
+
+}
+
+@keyframes rotate   {
+  0%   {
+    transform: rotate(0);
+
+}
+100%   {
+  transform: rotate(360 deg);
+}
+}
