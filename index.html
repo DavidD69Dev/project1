@@ -29,7 +29,7 @@
     </header>
 
 
-    <h1>Les meilleures adresses pour manger </h1>
+    <h1>Un petit creux ? </h1>
 
 
     <section class="filters">
@@ -46,13 +46,17 @@
         <div class="filter-box">
             <h3>Prix</h3>
             <ul id="priceList">
-                <li><input type="radio" name="price" value="5€ - 10€" data-price-min="5" data-price-max="10"> 5€ - 10€
+                <li><input type="radio" name="price" value="5€ - 10€" data-price-min="5" data-price-max="10"> 5€ -
+                    10€
                 </li>
-                <li><input type="radio" name="price" value="11€ - 15€" data-price-min="11" data-price-max="15"> 11€ -
+                <li><input type="radio" name="price" value="11€ - 15€" data-price-min="11" data-price-max="15"> 11€
+                    -
                     15€</li>
-                <li><input type="radio" name="price" value="16€ - 20€" data-price-min="16" data-price-max="20"> 16€ -
+                <li><input type="radio" name="price" value="16€ - 20€" data-price-min="16" data-price-max="20"> 16€
+                    -
                     20€</li>
-                <li><input type="radio" name="price" value="21€ - 25€" data-price-min="21" data-price-max="25"> 21€ -
+                <li><input type="radio" name="price" value="21€ - 25€" data-price-min="21" data-price-max="25"> 21€
+                    -
                     25€</li>
                 <li><input type="radio" name="price" value="26€+" data-price-min="26"> 26€+</li>
             </ul>
@@ -67,6 +71,7 @@
                 <li><input type="radio" name="rating" value="⭐⭐⭐⭐⭐"> ⭐⭐⭐⭐⭐</li>
             </ul>
         </div>
+        <button class="resetButton">Réinitialiser</button>
     </section>
 
     </header>
@@ -77,7 +82,15 @@
             <section class="container">
                 <!--Vignette desktop/mobile vignette 1-->
                 <section class="thumbnail">
-                    <img class="imgthumbnail" src="louis-hansel-sushi.jpg" alt="Déliciseuse pizza">
+                    <div class="carousel">
+                        <button class="btn" id="prev">&#10096;</button>
+                        <button class="btn" id="next">&#10097;</button>
+                        <ul>
+                            <li class="slide"><img src="jay-wennington-Brasserie.jpg" alt="city"></li>
+                            <li class="slide active"><img src="khalid-boutchich-tacos.jpg" alt="forest"></li>
+                            <li class="slide"><img src="louis-hansel-sushi.jpg" alt="mountains"></li>
+                        </ul>
+                    </div>
                     <section class="thumbnail-grid">
                         <h3 class="resto-type">Sushi</h3>
                         <h4 class="resto-stars">5<div class="resto-stars-WCS"></div>
