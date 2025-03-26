@@ -1,53 +1,48 @@
-// // Sélection des éléments des filtres
+// Sélection des éléments des filtres
 const categoryFilters = document.querySelectorAll('input[name="category"]');
 const priceFilters = document.querySelectorAll('input[name="price"]');
 const ratingFilters = document.querySelectorAll('input[name="rating"]');
 
-// // Sélection des vignettes des restaurants
+// Sélection des vignettes des restaurants
 const restaurants = document.querySelectorAll(".thumbnail");
 
-// // Fonction pour appliquer les filtres
+// Fonction pour appliquer les filtres
 function applyFilters() {
-	const selectedCategory = getSelectedFilter(categoryFilters);
-	const selectedCategoryValue = selectedCategory
-		? selectedCategory.value
-		: null;
-	const selectedPrice = getSelectedFilter(priceFilters);
-	const selectedPriceMin = selectedPrice
-		? selectedPrice.getAttribute("data-price-min")
-		: null;
-	const selectedPriceMax = selectedPrice
-		? selectedPrice.getAttribute("data-price-max")
-		: null;
-	const selectedRating = getSelectedFilter(ratingFilters);
-	const selectedRatingValue = selectedRating ? selectedRating.value : null;
-
-	console.log("==============================");
-	console.log("selectedCategoryValue = " + selectedCategoryValue);
-	console.log("selectedPriceMin = " + selectedPriceMin);
-	console.log("selectedPriceMax = " + selectedPriceMax);
-	console.log("selectedRatingValue = " + selectedRatingValue);
+	// Données filtres.
+	const filterCategory = getSelectedFilter(categoryFilters);
+	const filterCategoryValue = filterCategory ? filterCategory.value : null;
+	const filterPrice = getSelectedFilter(priceFilters);
+	const filterPriceValue = filterPrice ? filterPrice.value : null;
+	const filterPriceMin = filterPrice ? Number(filterPrice.getAttribute("data-price-min")) : null;
+	const filterPriceMax = filterPrice ? Number(filterPrice.getAttribute("data-price-max")) : null;
+	const filterRating = getSelectedFilter(ratingFilters);
+	const filterRatingValue = filterRating ? filterRating.value : null;
 
 	restaurants.forEach((restaurant) => {
-		const category = restaurant.querySelector(".resto-type").textContent.trim();
-		/*const priceRange = restaurant.querySelector('.resto-price').textContent.trim();*/
-		const rating = restaurant.querySelector(".resto-stars").textContent.trim();
-		console.log("|" + category + "|");
-		console.log("|" + selectedCategory + "|");
+		// Données restaurant.
+		const restoCategory = restaurant.querySelector(".resto-type").textContent.trim();
+		const restoPrices = restaurant.querySelector(".resto-price");
+		const restoPriceMin = Number(restoPrices.getAttribute("data-prix-min"));
+		const restoPriceMax = Number(restoPrices.getAttribute("data-prix-max"));
+		const restoRating = Number(restaurant.querySelector(".resto-stars").textContent.trim());
 
-		// Vérification de la correspondance des filtres
-		const matchesCategory = selectedCategory
-			? category.includes(selectedCategoryValue)
-			: true;
-		/*const matchesPrice = selectedPrice ? priceRange.includes(selectedPrice) : true;*/
-		const matchesRating = selectedRating
-			? Number(rating) == selectedRatingValue.length
-			: true;
-		console.log("matchesCategory = " + matchesCategory);
-		console.log("matchesRating = " + matchesRating);
+		// Vérification de la correspondance des filtres.
+		const matchesCategory = filterCategory ? restoCategory.includes(filterCategoryValue) || filterCategoryValue == "None" : true;
+		const matchesPrice = (
+			filterPriceValue == "None"
+			?
+            true
+			:
+            (
+                (filterPriceMin ? filterPriceMin <= restoPriceMin : true)
+                &&
+			    (filterPriceMax ? restoPriceMax <= filterPriceMax : true)
+            )
+        );
+		const matchesRating = filterRating ? restoRating == filterRatingValue.length || filterRatingValue == "None": true;
 
-		//         // Affichage ou masquage de la vignette selon les filtres
-		if (matchesCategory /*&& matchesPrice*/ && matchesRating) {
+		// Affichage ou masquage de la vignette selon les filtres
+		if (matchesCategory && matchesPrice && matchesRating) {
 			restaurant.style.display = "block";
 		} else {
 			restaurant.style.display = "none";
@@ -55,7 +50,7 @@ function applyFilters() {
 	});
 }
 
-// // Fonction pour obtenir la valeur sélectionnée d'un groupe de filtres
+// Fonction pour obtenir la valeur sélectionnée d'un groupe de filtres
 function getSelectedFilter(filters) {
 	let selectedFilter = "";
 	filters.forEach((filter) => {
@@ -63,118 +58,50 @@ function getSelectedFilter(filters) {
 			selectedFilter = filter;
 		}
 	});
+
 	return selectedFilter;
 }
 
-// // Ajout des événements aux filtres
-document
-	.getElementById("categoryList")
-	.addEventListener("change", applyFilters);
+// Ajout des événements aux filtres
+document.getElementById("categoryList").addEventListener("change", applyFilters);
 document.getElementById("priceList").addEventListener("change", applyFilters);
 document.getElementById("ratingList").addEventListener("change", applyFilters);
 
-// Reset button
-const resetButton = document.querySelector(".resetButton");
-
-resetButton.addEventListener("click", function () {
-	for (filter of categoryFilters) {
-		filter.checked = false;
-	}
-	for (filter of priceFilters) {
-		filter.checked = false;
-	}
-	for (filter of ratingFilters) {
-		filter.checked = false;
-	}
-	applyFilters();
-});
-
-// // Initialisation des filtres au chargement de la page
+// Initialisation des filtres au chargement de la page
 applyFilters();
 
-// /* CARTE VERSION MOBILE - en cours de travail...
-//                     // L'id du container, par exemple <div id="map"></div>
-//                     var mapID = 'map';
-
-//                     // Plan IGN avec une transparence de 80%
-//                     var PlanIGN = L.tileLayer('https://data.geopf.fr/wmts?'+
-//                         '&REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&TILEMATRIXSET=PM'+
-//                         '&LAYER={ignLayer}&STYLE={style}&FORMAT={format}'+
-//                         '&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}',
-//                         {
-//                             ignLayer: 'GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2',
-//                             style: 'normal',
-//                             format: 'image/png',
-//                             service: 'WMTS',
-//                             opacity: 0.8,
-//                             attribution: 'Carte © IGN/Geoplateforme'
-//                     });
-
-//                     // Photographies aériennes en-dessous de Plan IGN
-//                     let OrthoIGN = L.tileLayer('https://data.geopf.fr/wmts?'+
-//                         '&REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&TILEMATRIXSET=PM'+
-//                         '&LAYER={ignLayer}&STYLE={style}&FORMAT={format}'+
-//                         '&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}',
-//                         {
-//                             ignLayer: 'ORTHOIMAGERY.ORTHOPHOTOS',
-//                             style: 'normal',
-//                             format: 'image/jpeg',
-//                             service: 'WMTS'
-//                     });
-//                     // Ma carte
-//                     let myMap = L.map(mapID, {
-//                         center: [45.75036994086184, 4.828724700166397],
-//                         zoom: 25,
-//                         layers: [OrthoIGN,PlanIGN]
-//                     })
-// */
-
-// /*const thumbnail=document.querySelector(".thumbnail")
-// const thumbnailPopup=document.querySelector(".thumbnail-popup")
-
-// thumbnail.addEventListener("click", () => {
-//     const screenWidth = window.innerWidth;
-//     if(screenWidth<=800){
-//         if(thumbnail.style.display==="flex"){
-//             thumbnail.style.display="none";
-//             thumbnailPopup.style.display="flex"
-//     }else if(screenWidth>800){
-//         if(thumbnail.style.display==="flex")
-//             thumbnailPopup.style.display="none";
-//         }
-//     else{thumbnail.style.display="flex"}
-//         }
-//     }
-// )
-
-// const cancel=document.querySelector("#cancel")
-
-// cancel.addEventListener("click", () =>{
-//     if (thumbnailPopup.style.display==="flex"){
-//         thumbnailPopup.style.display="none";
-//         thumbnail.style.display="flex"
-//     }else{thumbnail.style.display="flex"}
-//     }
-// )*/
-//  main
-
-/* carousel  */
-
-const buttons = document.querySelectorAll(".btn");
-const slides = document.querySelectorAll(".slide");
-
-buttons.forEach((button) => {
-	button.addEventListener("click", (btn) => {
-		const calculNextSlide = btn.target.id === "next" ? 1 : -1;
-		const slideActive = document.querySelector(".active");
-
-		newIndex = [...slides].indexOf(slideActive) + calculNextSlide;
-
-		if (newIndex < 0) newIndex = [...slides].length - 1;
-		if (newIndex >= [...slides].length) newIndex = 0;
-
-		slides[newIndex].classList.add("active");
-
-		slideActive.classList.remove("active");
-	});
+window.addEventListener('resize', () => {
+    for (let filterBox of document.querySelectorAll(".filter-box")) {
+        const ul = filterBox.querySelector("ul")
+        if (window.innerWidth > 480) {
+            ul.style.display = 'block';
+            filterBox.style.setProperty('height', '17rem', 'important');;
+        } else {
+            ul.style.display = 'none';
+            filterBox.style.setProperty('height', '3.5rem', 'important');;
+        }
+    }
 });
+
+// Gestion de l'affichage des filtre en mode mobile
+function filterClick(e) {
+    if (window.matchMedia('(max-width: 480px)').matches) {
+        const filterBox = e.parentElement;
+        const ul = filterBox.querySelector("ul")
+
+        if ((! ul.style.display) || (ul.style.display == 'none')) {
+            for (let filterBox of document.querySelectorAll(".filter-box")) {
+                const ul = filterBox.querySelector("ul")
+                ul.style.display = 'none';
+            filterBox.style.setProperty('height', '3.5rem', 'important');;
+            }
+
+            ul.style.display = 'block';
+            filterBox.style.setProperty('height', '17rem', 'important');;
+        } else {
+            ul.style.display = 'none';
+            filterBox.style.setProperty('height', '3.5rem', 'important');;
+        }
+    }
+}
+
