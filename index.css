@@ -11,7 +11,7 @@
 	--second: #fdedf2;
 	/* --textColor: #a0a0a0; */
 	--texColor: white;
-	--shadows: lightgrey;
+	--shadows: rgb(52, 52, 52);
 }
 
 body {
@@ -136,11 +136,11 @@ h1 {
 	padding: .3rem;
 	font-size: 1rem;
 	border-radius: 10px;
-	border-style: none;
+	border-color: var(--main);
 	box-shadow: 0 0 5px var(--shadows);
 
 	&:hover {
-		box-shadow: 0 0 5px var(--shadows);
+		box-shadow: 0 0 10px var(--shadows);
 	}
 }
 
@@ -205,7 +205,7 @@ p {
 }
 
 .resto-stars-WCS {
-	background-image: url("blackWildLogo.png");
+	background-image: url("images/blackWildLogo.png");
 	background-size: contain;
 	background-repeat: no-repeat;
 	width: 16px;
@@ -277,7 +277,7 @@ footer {
 
 /* POP-UP - DÉBUT*/
 
-@media screen and (min-width: 800px) {
+@media screen and (max-width: 800px) {
 	header {
 		justify-content: space-between;
 	}
@@ -298,6 +298,7 @@ footer {
 	.thumbnail-popup-top {
 		display: flex;
 		flex-direction: column;
+		margin: 0 0 20px 0;
 	}
 
 	.cancel {
@@ -314,26 +315,24 @@ footer {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		grid-template-rows: repeat(8, 1fr);
-		margin: 20px 0;
-
+		height: 90%;
 		width: 100%;
-		height: 40px;
+		margin: auto;
 	}
 
 	.img-popup {
 		object-fit: cover;
 		width: 100%;
 		height: 200px;
-		margin: 0 0 30px 0;
 	}
 
-	/*#map {
+	/* .map {
         width: 100%;
         height: 200px;
-        margin:0 0 30px 0;*/
+        margin:0 0 30px 0; */
 
 	.resto-type-popup {
-		grid-column: 1 / span 2;
+		grid-column: 1;
 		grid-row: 1;
 		margin: 0 0 35px;
 	}
@@ -358,7 +357,7 @@ footer {
 
 	.resto-name-popup {
 		grid-column: 1 / span 2;
-		grid-row: 2;
+		grid-row: 3;
 		padding: 10px;
 	}
 
@@ -467,3 +466,4 @@ footer {
 	height: 100%;
 	width: 100%;
 }
+
