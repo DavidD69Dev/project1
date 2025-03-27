@@ -24,33 +24,33 @@
 
     <section class="filters">
         <div class="filter-box">
-            <h3 onclick="filterClick(this)">Catégorie</h3>
+            <h2 onclick="filterClick(this)">Catégorie</h2>
             <ul id="categoryList">
-                <li><input type="radio" name="category" value="Tacos"> Tacos</li>
-                <li><input type="radio" name="category" value="Pizza"> Pizza</li>
-                <li><input type="radio" name="category" value="Boulangerie"> Boulangerie</li>
-                <li><input type="radio" name="category" value="Sushi"> Sushi</li>
-                <li><input type="radio" name="category" value="Brasserie"> Brasserie</li>
+                <li><input type="radio" id="tacos" name="category" value="Tacos"> <label for="tacos"> Tacos</label></li>
+                <li><input type="radio" id="pizza" name="category" value="Pizza"> <label for="pizza"> Pizza</label></li>
+                <li><input type="radio" id="boulangerie" name="category" value="Boulangerie"> <label for="boulangerie"> Boulangerie</label></li>
+                <li><input type="radio" id="sushi" name="category" value="Sushi"> <label for="sushi"> Sushi</label></li>
+                <li><input type="radio" id="brasserie" name="category" value="Brasserie"> <label for="brasserie"> Brasserie</label></li>
             </ul>
         </div>
         <div class="filter-box">
-            <h3 onclick="filterClick(this)">Prix</h3>
+            <h2 onclick="filterClick(this)">Prix</h2>
             <ul id="priceList">
-                <li><input type="radio" name="price" data-price-min="5" data-price-max="15">5€ - 15€</li>
-                <li><input type="radio" name="price" data-price-min="10" data-price-max="20">10€ - 20€</li>
-                <li><input type="radio" name="price" data-price-min="15" data-price-max="25">15€ - 25€</li>
-                <li><input type="radio" name="price" data-price-min="15" data-price-max="30">15€ - 30€</li>
-                <li><input type="radio" name="price" data-price-min="20">+20€</li>
+                <li><input type="radio" id="fifteen" name="price" data-price-min="5" data-price-max="15"> <label for="fifteen">5€ - 15€</label></li>
+                <li><input type="radio" id="twenty" name="price" data-price-min="10" data-price-max="20"><label for="twenty">10€ - 20€</label></li>
+                <li><input type="radio" id="twentyfive" name="price" data-price-min="15" data-price-max="25"><label for="twentyfive">15€ - 25€</label></li>
+                <li><input type="radio" id="thirty" name="price" data-price-min="15" data-price-max="30"><label for="thirty">15€ - 30€</label></li>
+                <li><input type="radio" id="twentyplus" name="price" data-price-min="20"><label for="twentyplus">+20€</label></li>
             </ul>
         </div>
         <div class="filter-box">
-            <h3 onclick="filterClick(this)">Classement</h3>
+            <h2 onclick="filterClick(this)">Classement</h2>
             <ul id="ratingList">
-                <li><input type="radio" name="rating" value="⭐"> ⭐</li>
-                <li><input type="radio" name="rating" value="⭐⭐"> ⭐⭐</li>
-                <li><input type="radio" name="rating" value="⭐⭐⭐"> ⭐⭐⭐</li>
-                <li><input type="radio" name="rating" value="⭐⭐⭐⭐"> ⭐⭐⭐⭐</li>
-                <li><input type="radio" name="rating" value="⭐⭐⭐⭐⭐"> ⭐⭐⭐⭐⭐</li>
+                <li><input type="radio" id="oneStar" name="rating" value="⭐"> <label for="oneStar">⭐</label></li>
+                <li><input type="radio" id="twoStars" name="rating" value="⭐⭐"> <label for="twoStars">⭐⭐</label></li>
+                <li><input type="radio" id="threeStars" name="rating" value="⭐⭐⭐"> <label for="threeStars">⭐⭐⭐</label></li>
+                <li><input type="radio" id="fourStars" name="rating" value="⭐⭐⭐⭐"> <label for="fourStars">⭐⭐⭐⭐</label></li>
+                <li><input type="radio" id="fiveStars" name="rating" value="⭐⭐⭐⭐⭐"> <label for="fiveStars">⭐⭐⭐⭐⭐</label></li>
             </ul>
         </div>
         <button class="resetButton">Réinitialiser</button>

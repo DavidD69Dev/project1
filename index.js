@@ -123,7 +123,7 @@ buttons.forEach((button) => {
 
 // Gestion de l'affichage des filtre en mode mobile
 function filterClick(e) {
-	if (window.matchMedia("(max-width: 800px)").matches) {
+	if (window.matchMedia("(max-width: 768px)").matches) {
 		const filterBox = e.parentElement;
 		const ul = filterBox.querySelector("ul");
 
@@ -146,7 +146,7 @@ function filterClick(e) {
 window.addEventListener("resize", () => {
 	for (let filterBox of document.querySelectorAll(".filter-box")) {
 		const ul = filterBox.querySelector("ul");
-		if (window.innerWidth > 800) {
+		if (window.innerWidth > 768) {
 			ul.style.display = "block";
 			filterBox.style.setProperty("height", "17rem", "important");
 		} else {
