@@ -34,8 +34,10 @@
 
     <section class="filters">
         <div class="filter-box">
-            <h3>Catégorie de resto</h3>
+            <h3 onclick="filterClick(this)">Catégorie de resto</h3>
             <ul id="categoryList">
+                <li><input type="radio" name="category" value="None" checked="true">Aucun filtre</li>
+                <br/>
                 <li><input type="radio" name="category" value="Tacos"> Tacos</li>
                 <li><input type="radio" name="category" value="Pizza"> Pizza</li>
                 <li><input type="radio" name="category" value="Boulangerie"> Boulangerie</li>
@@ -44,26 +46,22 @@
             </ul>
         </div>
         <div class="filter-box">
-            <h3>Prix</h3>
+            <h3 onclick="filterClick(this)">Prix</h3>
             <ul id="priceList">
-                <li><input type="radio" name="price" value="5€ - 10€" data-price-min="5" data-price-max="10"> 5€ -
-                    10€
-                </li>
-                <li><input type="radio" name="price" value="11€ - 15€" data-price-min="11" data-price-max="15"> 11€
-                    -
-                    15€</li>
-                <li><input type="radio" name="price" value="16€ - 20€" data-price-min="16" data-price-max="20"> 16€
-                    -
-                    20€</li>
-                <li><input type="radio" name="price" value="21€ - 25€" data-price-min="21" data-price-max="25"> 21€
-                    -
-                    25€</li>
-                <li><input type="radio" name="price" value="26€+" data-price-min="26"> 26€+</li>
+                <li><input type="radio" name="price" value="None" checked="true">Aucun filtre</li>
+                <br/>
+                <li><input type="radio" name="price" data-price-min="5" data-price-max="15">5€ - 15€</li>
+                <li><input type="radio" name="price" data-price-min="10" data-price-max="20">10€ - 20€</li>
+                <li><input type="radio" name="price" data-price-min="15" data-price-max="25">15€ - 25€</li>
+                <li><input type="radio" name="price" data-price-min="15" data-price-max="30">15€ - 30€</li>
+                <li><input type="radio" name="price" data-price-min="20">+20€</li>
             </ul>
         </div>
         <div class="filter-box">
-            <h3>Classement</h3>
+            <h3 onclick="filterClick(this)">Classement</h3>
             <ul id="ratingList">
+                <li><input type="radio" name="rating" value="None" checked="true">Aucun filtre</li>
+                <br/>
                 <li><input type="radio" name="rating" value="⭐"> ⭐</li>
                 <li><input type="radio" name="rating" value="⭐⭐"> ⭐⭐</li>
                 <li><input type="radio" name="rating" value="⭐⭐⭐"> ⭐⭐⭐</li>
@@ -71,13 +69,12 @@
                 <li><input type="radio" name="rating" value="⭐⭐⭐⭐⭐"> ⭐⭐⭐⭐⭐</li>
             </ul>
         </div>
-        <button class="resetButton">Réinitialiser</button>
     </section>
 
-    </header>
-    <!--<h1>Les meilleurs adresses pour manger </h1>-->
+
     <main>
         <!--Vignette-->
+       
         <section class="content">
             <section class="container">
                 <!--Vignette desktop/mobile vignette 1-->
@@ -85,10 +82,10 @@
                     <div class="carousel">
                         <button class="btn" id="prev">&#10096;</button>
                         <button class="btn" id="next">&#10097;</button>
-                        <ul class="slides">
-                            <li class="slide"><img src="images/sushi1.jpg" alt="city"></li>
-                            <li class="slide active"><img src="images/sushi3.jpg" alt="forest"></li>
-                            <li class="slide"><img src="images/sushi5.jpg" alt="mountains"></li>
+                        <ul>
+                            <li class="slide"><img src="jay-wennington-Brasserie.jpg" alt="city"></li>
+                            <li class="slide active"><img src="khalid-boutchich-tacos.jpg" alt="forest"></li>
+                            <li class="slide"><img src="louis-hansel-sushi.jpg" alt="mountains"></li>
                         </ul>
                     </div>
                     <section class="thumbnail-grid">
@@ -98,7 +95,7 @@
                         <p class="resto-name ">Saint-Paul Sushi</p>
                         <p class="resto-adress ">39 Cr Suchet, 69002 Lyon</p>
                         <p class="resto-phone ">04.78.79.98.97</p>
-                        <p class="resto-price ">10€-20€</p>
+                        <p class="resto-price" data-prix-min="10" data-prix-max="20">10€-20€</p>
                     </section>
                 </section>
                 <!--Vignette pop-up mobile-->
@@ -108,11 +105,11 @@
                             <path
                                 d="M16.5,33.6l7.5-7.5,7.5,7.5,2.1-2.1-7.5-7.5,7.5-7.5-2.1-2.1-7.5,7.5-7.5-7.5-2.1,2.1,7.5,7.5-7.5,7.5,2.1,2.1ZM24,44c-2.7,0-5.3-.5-7.8-1.6s-4.6-2.5-6.4-4.3-3.3-3.9-4.3-6.4-1.6-5-1.6-7.8.5-5.4,1.6-7.8,2.5-4.6,4.3-6.4,3.9-3.2,6.4-4.3,5-1.6,7.8-1.6,5.4.5,7.8,1.6,4.6,2.5,6.4,4.3,3.2,3.9,4.3,6.4,1.6,5,1.6,7.8-.5,5.3-1.6,7.8-2.5,4.6-4.3,6.4-3.9,3.3-6.4,4.3-5,1.6-7.8,1.6ZM24,41c4.7,0,8.8-1.7,12.1-5,3.3-3.3,5-7.3,5-12s-1.7-8.8-5-12.1-7.3-5-12.1-5-8.7,1.7-12,5c-3.3,3.3-5,7.3-5,12.1s1.7,8.7,5,12c3.3,3.3,7.3,5,12,5Z" />
                         </svg>
-                        <img class="img-popup" src="louis-hansel-sushi.jpg" alt="Déliciseuse pizza">
+                        <img class="img-popup" src="louis-hansel-sushi.jpg" alt="Sushi1">
                         <div id="map"></div>
                     </section>
                     <section class="thumbnail-popup-grid">
-                        <h3 class="resto-type-popup">sushi</h3>
+                        <h3 class="resto-type-popup">Boulangerie</h3>
                         <h4 class="resto-stars-popup">5<div class="resto-stars-WCS"></div>
                         </h4>
                         <p class="resto-name-popup ">Saint-Paul Sushi</p>
@@ -141,7 +138,7 @@
                         <p class="resto-name ">Restaurant Kusadasi 2</p>
                         <p class="resto-adress ">25 Cr Suchet, 69002 Lyon</p>
                         <p class="resto-phone ">04.82.31.12.47</p>
-                        <p class="resto-price ">10€-20€</p>
+                        <p class="resto-price" data-prix-min="10" data-prix-max="20">10€-20€</p>
                     </section>
                 </section>
                 <!--Vignette pop-up mobile-->
@@ -151,7 +148,7 @@
                             <path
                                 d="M16.5,33.6l7.5-7.5,7.5,7.5,2.1-2.1-7.5-7.5,7.5-7.5-2.1-2.1-7.5,7.5-7.5-7.5-2.1,2.1,7.5,7.5-7.5,7.5,2.1,2.1ZM24,44c-2.7,0-5.3-.5-7.8-1.6s-4.6-2.5-6.4-4.3-3.3-3.9-4.3-6.4-1.6-5-1.6-7.8.5-5.4,1.6-7.8,2.5-4.6,4.3-6.4,3.9-3.2,6.4-4.3,5-1.6,7.8-1.6,5.4.5,7.8,1.6,4.6,2.5,6.4,4.3,3.2,3.9,4.3,6.4,1.6,5,1.6,7.8-.5,5.3-1.6,7.8-2.5,4.6-4.3,6.4-3.9,3.3-6.4,4.3-5,1.6-7.8,1.6ZM24,41c4.7,0,8.8-1.7,12.1-5,3.3-3.3,5-7.3,5-12s-1.7-8.8-5-12.1-7.3-5-12.1-5-8.7,1.7-12,5c-3.3,3.3-5,7.3-5,12.1s1.7,8.7,5,12c3.3,3.3,7.3,5,12,5Z" />
                         </svg>
-                        <img class="img-popup" src="khalid-boutchich-tacos.jpg" alt="Déliciseuse pizza">
+                        <img class="img-popup" src="khalid-boutchich-tacos.jpg" alt="Tacos1">
                         <div id="map"></div>
                     </section>
                     <section class="thumbnail-popup-grid">
@@ -168,15 +165,7 @@
             <section class="container">
                 <!--Vignette desktop/mobile vignette 3-->
                 <section class="thumbnail">
-                    <div class="carousel">
-                        <button class="btn" id="prev">&#10096;</button>
-                        <button class="btn" id="next">&#10097;</button>
-                        <ul class="slides">
-                            <li class="slide"><img src="images/brasserie1.jpg" alt="city"></li>
-                            <li class="slide active"><img src="images/brasserie2.jpg" alt="forest"></li>
-                            <li class="slide"><img src="images/brasserie3.jpg" alt="mountains"></li>
-                        </ul>
-                    </div>
+                    <img class="imgthumbnail" src="jay-wennington-Brasserie.jpg" alt="Déliciseuse pizza">
                     <section class="thumbnail-grid">
                         <h3 class="resto-type">Brasserie</h3>
                         <h4 class="resto-stars">4<div class="resto-stars-WCS"></div>
@@ -184,7 +173,7 @@
                         <p class="resto-name ">Les Vieux Garçons</p>
                         <p class="resto-adress ">70 Cr Suchet, 69002 Lyon</p>
                         <p class="resto-phone ">04.78.60.87.86</p>
-                        <p class="resto-price ">20€-30€</p>
+                        <p class="resto-price" data-prix-min="20" data-prix-max="30">20€-30€</p>
                     </section>
                 </section>
                 <!--Vignette pop-up mobile-->
@@ -194,7 +183,7 @@
                             <path
                                 d="M16.5,33.6l7.5-7.5,7.5,7.5,2.1-2.1-7.5-7.5,7.5-7.5-2.1-2.1-7.5,7.5-7.5-7.5-2.1,2.1,7.5,7.5-7.5,7.5,2.1,2.1ZM24,44c-2.7,0-5.3-.5-7.8-1.6s-4.6-2.5-6.4-4.3-3.3-3.9-4.3-6.4-1.6-5-1.6-7.8.5-5.4,1.6-7.8,2.5-4.6,4.3-6.4,3.9-3.2,6.4-4.3,5-1.6,7.8-1.6,5.4.5,7.8,1.6,4.6,2.5,6.4,4.3,3.2,3.9,4.3,6.4,1.6,5,1.6,7.8-.5,5.3-1.6,7.8-2.5,4.6-4.3,6.4-3.9,3.3-6.4,4.3-5,1.6-7.8,1.6ZM24,41c4.7,0,8.8-1.7,12.1-5,3.3-3.3,5-7.3,5-12s-1.7-8.8-5-12.1-7.3-5-12.1-5-8.7,1.7-12,5c-3.3,3.3-5,7.3-5,12.1s1.7,8.7,5,12c3.3,3.3,7.3,5,12,5Z" />
                         </svg>
-                        <img class="img-popup" src="louis-hansel-sushi.jpg" alt="Déliciseuse pizza">
+                        <img class="img-popup" src="jay-wennington-Brasserie.jpg" alt="Déliciseuse pizza">
                         <div id="map"></div>
                     </section>
                     <section class="thumbnail-popup-grid">
@@ -208,142 +197,13 @@
                     </section>
                 </section>
             </section>
-            <section class="container">
-                <!--Vignette desktop/mobile vignette 4-->
-                <section class="thumbnail">
-                    <div class="carousel">
-                        <button class="btn" id="prev">&#10096;</button>
-                        <button class="btn" id="next">&#10097;</button>
-                        <ul class="slides">
-                            <li class="slide"><img src="images/brasserie5.jpg" alt="city"></li>
-                            <li class="slide active"><img src="images/brasserie6.jpg" alt="forest"></li>
-                            <li class="slide"><img src="images/brasserie7.jpg" alt="mountains"></li>
-                        </ul>
-                    </div>
-                    <section class="thumbnail-grid">
-                        <h3 class="resto-type">Brasserie</h3>
-                        <h4 class="resto-stars">5<div class="resto-stars-WCS"></div>
-                        </h4>
-                        <p class="resto-name ">la Source</p>
-                        <p class="resto-adress ">Juste en bas, 69002 Lyon</p>
-                        <p class="resto-phone ">04.87.63.82.87</p>
-                        <p class="resto-price ">20€-30€</p>
-                    </section>
-                </section>
-                <!--Vignette pop-up mobile-->
-                <section class="thumbnail-popup">
-                    <section class="thumbnail-popup-top">
-                        <svg class="cancel" viewBox="0 0 48 48">
-                            <path
-                                d="M16.5,33.6l7.5-7.5,7.5,7.5,2.1-2.1-7.5-7.5,7.5-7.5-2.1-2.1-7.5,7.5-7.5-7.5-2.1,2.1,7.5,7.5-7.5,7.5,2.1,2.1ZM24,44c-2.7,0-5.3-.5-7.8-1.6s-4.6-2.5-6.4-4.3-3.3-3.9-4.3-6.4-1.6-5-1.6-7.8.5-5.4,1.6-7.8,2.5-4.6,4.3-6.4,3.9-3.2,6.4-4.3,5-1.6,7.8-1.6,5.4.5,7.8,1.6,4.6,2.5,6.4,4.3,3.2,3.9,4.3,6.4,1.6,5,1.6,7.8-.5,5.3-1.6,7.8-2.5,4.6-4.3,6.4-3.9,3.3-6.4,4.3-5,1.6-7.8,1.6ZM24,41c4.7,0,8.8-1.7,12.1-5,3.3-3.3,5-7.3,5-12s-1.7-8.8-5-12.1-7.3-5-12.1-5-8.7,1.7-12,5c-3.3,3.3-5,7.3-5,12.1s1.7,8.7,5,12c3.3,3.3,7.3,5,12,5Z" />
-                        </svg>
-                        <img class="img-popup" src="louis-hansel-sushi.jpg" alt="Déliciseuse pizza">
-                        <div id="map"></div>
-                    </section>
-                    <section class="thumbnail-popup-grid">
-                        <h3 class="resto-type-popup">Boulangerie</h3>
-                        <h4 class="resto-stars-popup">5<div class="resto-stars-WCS"></div>
-                        </h4>
-                        <p class="resto-name-popup ">Saint-Paul Sushi</p>
-                        <p class="resto-adress-popup ">39 Cr Suchet, 69002 Lyon</p>
-                        <p class="resto-phone-popup ">04.78.79.98.97</p>
-                        <p class="resto-price-popup ">10€-20€</p>
-                    </section>
-                </section>
-            </section>
-            <section class="container">
-                <!--Vignette desktop/mobile vignette 5-->
-                <section class="thumbnail">
-                    <div class="carousel">
-                        <button class="btn" id="prev">&#10096;</button>
-                        <button class="btn" id="next">&#10097;</button>
-                        <ul class="slides">
-                            <li class="slide"><img src="images/pizza1.jpg" alt="city"></li>
-                            <li class="slide active"><img src="images/pizza4.jpg" alt="forest"></li>
-                            <li class="slide"><img src="images/pizza3.jpg" alt="mountains"></li>
-                        </ul>
-                    </div>
-                    <section class="thumbnail-grid">
-                        <h3 class="resto-type">Pizza</h3>
-                        <h4 class="resto-stars">5<div class="resto-stars-WCS"></div>
-                        </h4>
-                        <p class="resto-name ">Pizzeria Avarello</p>
-                        <p class="resto-adress ">13 Cr Suchet, 69002 Lyon</p>
-                        <p class="resto-phone ">04.78.37.30.55</p>
-                        <p class="resto-price ">10€-20€</p>
-                    </section>
-                </section>
-                <!--Vignette pop-up mobile-->
-                <section class="thumbnail-popup">
-                    <section class="thumbnail-popup-top">
-                        <svg class="cancel" viewBox="0 0 48 48">
-                            <path
-                                d="M16.5,33.6l7.5-7.5,7.5,7.5,2.1-2.1-7.5-7.5,7.5-7.5-2.1-2.1-7.5,7.5-7.5-7.5-2.1,2.1,7.5,7.5-7.5,7.5,2.1,2.1ZM24,44c-2.7,0-5.3-.5-7.8-1.6s-4.6-2.5-6.4-4.3-3.3-3.9-4.3-6.4-1.6-5-1.6-7.8.5-5.4,1.6-7.8,2.5-4.6,4.3-6.4,3.9-3.2,6.4-4.3,5-1.6,7.8-1.6,5.4.5,7.8,1.6,4.6,2.5,6.4,4.3,3.2,3.9,4.3,6.4,1.6,5,1.6,7.8-.5,5.3-1.6,7.8-2.5,4.6-4.3,6.4-3.9,3.3-6.4,4.3-5,1.6-7.8,1.6ZM24,41c4.7,0,8.8-1.7,12.1-5,3.3-3.3,5-7.3,5-12s-1.7-8.8-5-12.1-7.3-5-12.1-5-8.7,1.7-12,5c-3.3,3.3-5,7.3-5,12.1s1.7,8.7,5,12c3.3,3.3,7.3,5,12,5Z" />
-                        </svg>
-                        <img class="img-popup" src="louis-hansel-sushi.jpg" alt="Déliciseuse pizza">
-                        <div id="map"></div>
-                    </section>
-                    <section class="thumbnail-popup-grid">
-                        <h3 class="resto-type-popup">Boulangerie</h3>
-                        <h4 class="resto-stars-popup">4<div class="resto-stars-WCS"></div>
-                        </h4>
-                        <p class="resto-name-popup ">Saint-Paul Sushi</p>
-                        <p class="resto-adress-popup ">39 Cr Suchet, 69002 Lyon</p>
-                        <p class="resto-phone-popup ">04.78.79.98.97</p>
-                        <p class="resto-price-popup ">10€-20€</p>
-                    </section>
-                </section>
-            </section>
-            <section class="container">
-                <!--Vignette desktop/mobile vignette 6-->
-                <section class="thumbnail">
-                    <div class="carousel">
-                        <button class="btn" id="prev">&#10096;</button>
-                        <button class="btn" id="next">&#10097;</button>
-                        <ul class="slides">
-                            <li class="slide"><img src="images/boulangerie3.jpg" alt="city"></li>
-                            <li class="slide active"><img src="images/boulangerie1.jpg" alt="forest"></li>
-                            <li class="slide"><img src="images/boulangerie2.jpg" alt="mountains"></li>
-                        </ul>
-                    </div>
-                    <section class="thumbnail-grid">
-                        <h3 class="resto-type">Boulangerie</h3>
-                        <h4 class="resto-stars">5<div class="resto-stars-WCS"></div>
-                        </h4>
-                        <p class="resto-name ">Le Bar à Pains</p>
-                        <p class="resto-adress ">39 Cr Suchet, 69002 Lyon</p>
-                        <p class="resto-phone ">04.72.31.65.16</p>
-                        <p class="resto-price ">10€-20€</p>
-                    </section>
-                </section>
-                <!--Vignette pop-up mobile-->
-                <section class="thumbnail-popup">
-                    <section class="thumbnail-popup-top">
-                        <svg class="cancel" viewBox="0 0 48 48">
-                            <path
-                                d="M16.5,33.6l7.5-7.5,7.5,7.5,2.1-2.1-7.5-7.5,7.5-7.5-2.1-2.1-7.5,7.5-7.5-7.5-2.1,2.1,7.5,7.5-7.5,7.5,2.1,2.1ZM24,44c-2.7,0-5.3-.5-7.8-1.6s-4.6-2.5-6.4-4.3-3.3-3.9-4.3-6.4-1.6-5-1.6-7.8.5-5.4,1.6-7.8,2.5-4.6,4.3-6.4,3.9-3.2,6.4-4.3,5-1.6,7.8-1.6,5.4.5,7.8,1.6,4.6,2.5,6.4,4.3,3.2,3.9,4.3,6.4,1.6,5,1.6,7.8-.5,5.3-1.6,7.8-2.5,4.6-4.3,6.4-3.9,3.3-6.4,4.3-5,1.6-7.8,1.6ZM24,41c4.7,0,8.8-1.7,12.1-5,3.3-3.3,5-7.3,5-12s-1.7-8.8-5-12.1-7.3-5-12.1-5-8.7,1.7-12,5c-3.3,3.3-5,7.3-5,12.1s1.7,8.7,5,12c3.3,3.3,7.3,5,12,5Z" />
-                        </svg>
-                        <img class="img-popup" src="louis-hansel-sushi.jpg" alt="Déliciseuse pizza">
-                        <div id="map"></div>
-                    </section>
-                    <section class="thumbnail-popup-grid">
-                        <h3 class="resto-type-popup">Boulangerie</h3>
-                        <h4 class="resto-stars-popup">5<div class="resto-stars-WCS"></div>
-                        </h4>
-                        <p class="resto-name-popup ">Saint-Paul Sushi</p>
-                        <p class="resto-adress-popup ">39 Cr Suchet, 69002 Lyon</p>
-                        <p class="resto-phone-popup ">04.78.79.98.97</p>
-                        <p class="resto-price-popup ">10€-20€</p>
-                    </section>
-                </section>
-            </section>
+
         </section>
     </main>
     <script src="index.js"></script>
 
 </body>
 <footer>
-    <p>Pictures<a href="https://unsplash.com/fr" target="_blank"> Unsplash</a></p>
     <p>@ WildCodeSchool</p>
 </footer>
 
