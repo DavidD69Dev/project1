@@ -71,15 +71,44 @@ document.getElementById("ratingList").addEventListener("change", applyFilters);
 applyFilters();
 
 
-/* carousel  */
+// // Ajout des événements aux filtres
+document
+	.getElementById("categoryList")
+	.addEventListener("change", applyFilters);
+document.getElementById("priceList").addEventListener("change", applyFilters);
+document.getElementById("ratingList").addEventListener("change", applyFilters);
 
-const buttons = document.querySelectorAll(".btn");
-const slides = document.querySelectorAll(".slide");
+// Reset button
+const resetButton = document.querySelector(".resetButton");
+
+resetButton.addEventListener("click", function () {
+	for (filter of categoryFilters) {
+		filter.checked = false;
+	}
+	for (filter of priceFilters) {
+		filter.checked = false;
+	}
+	for (filter of ratingFilters) {
+		filter.checked = false;
+	}
+	applyFilters();
+});
+
+// // Initialisation des filtres au chargement de la page
+applyFilters();
+
+/* carousel  */
+/* Carousels.forEach permet de boucler sur chaque carousel individuellement ! 
+Attention à cibler les buttons/slides l'interieur des carousels (carousel.querySelectorAll)*/
+const carousels = document.querySelectorAll(".carousel")
+carousels.forEach(carousel => {
+const buttons = carousel.querySelectorAll(".btn");
+const slides = carousel.querySelectorAll(".slide");
 
 buttons.forEach((button) => {
 	button.addEventListener("click", (btn) => {
 		const calculNextSlide = btn.target.id === "next" ? 1 : -1;
-		const slideActive = document.querySelector(".active");
+		const slideActive = carousel.querySelector(".active");
 
 		newIndex = [...slides].indexOf(slideActive) + calculNextSlide;
 
@@ -90,4 +119,55 @@ buttons.forEach((button) => {
 
 		slideActive.classList.remove("active");
 	});
+})});
+
+// Gestion de l'affichage des filtre en mode mobile
+function filterClick(e) {
+	if (window.matchMedia("(max-width: 800px)").matches) {
+		const filterBox = e.parentElement;
+		const ul = filterBox.querySelector("ul");
+
+		if (!ul.style.display || ul.style.display == "none") {
+			for (let filterBox of document.querySelectorAll(".filter-box")) {
+				const ul = filterBox.querySelector("ul");
+				ul.style.display = "none";
+				filterBox.style.setProperty("height", "3.5rem", "important");
+			}
+
+			ul.style.display = "block";
+			filterBox.style.setProperty("height", "17rem", "important");
+		} else {
+			ul.style.display = "none";
+			filterBox.style.setProperty("height", "3.5rem", "important");
+		}
+	}
+}
+//pour que les filtres se réouvrent bien en passant du mobile au desktop
+window.addEventListener("resize", () => {
+	for (let filterBox of document.querySelectorAll(".filter-box")) {
+		const ul = filterBox.querySelector("ul");
+		if (window.innerWidth > 800) {
+			ul.style.display = "block";
+			filterBox.style.setProperty("height", "17rem", "important");
+		} else {
+			ul.style.display = "none";
+			filterBox.style.setProperty("height", "3.5rem", "important");
+		}
+	}
 });
+function toggleRadioSelection(filters) {
+    filters.forEach((filter) => {
+        filter.addEventListener("click", function () {
+            if (this.checked) {
+                this.wasChecked = !this.wasChecked;
+                if (!this.wasChecked) {
+                    this.checked = false;
+                }
+            }
+            applyFilters();
+        });
+    });
+}
+toggleRadioSelection(categoryFilters);
+toggleRadioSelection(priceFilters);
+toggleRadioSelection(ratingFilters); 
