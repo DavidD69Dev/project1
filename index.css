@@ -5,15 +5,17 @@
 }
 
 :root {
-	/* --main: #094106; */
 	--main: #66c3ff;
-	/*  --second: #1e1e1e; */
 	--second: #fdedf2;
-	/* --textColor: #a0a0a0; */
-	--texColor: white;
+	--texColor: rgb(255, 255, 255);
 	--shadows: rgb(52, 52, 52);
 }
-
+.darkGreen {
+	 --main: #094106; 
+	 --second: #1e1e1e; 
+	 --textColor: #d6d6d6; 
+	 --shadows: rgb(129, 127, 127);
+	}
 body {
 	font-family: "Montserrat", sans-serif;
 	background-color: var(--second);
@@ -42,7 +44,7 @@ header {
 }
 
 /* animated logo */
-@keyframes shake {
+/* @keyframes shake {
 	0% {
 		transform: rotate(-10deg);
 	}
@@ -62,16 +64,16 @@ header {
 	100% {
 		transform: rotate(-10deg);
 	}
-}
+} */
 
 .logo {
 	width: 75px;
 	margin-left: 1rem;
 	transform: rotate(-10deg);
 
-	&:hover {
-		animation: shake 0.3s ease-in-out infinite;
-	}
+	/* &:hover {
+		animation: shake 0.5s ease-in-out infinite;
+	} */
 }
 
 h1 {
@@ -84,20 +86,20 @@ h1 {
 
 /* FILTERS */
 .filters {
-	position: relative;
-	/* position : relative needed to fix the reset button */
-	display: flex;
-	/* flex-wrap: wrap; unecessary  */
+	
+	
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
 	justify-content: center;
-	gap: 1rem;
-	margin: 80px auto 20px;
+	margin: 80px 1rem 20px;
+	gap : 1rem;
 	padding: 15px;
 	background-color: var(--second);
-	width: 80%;
+	width: auto;
 	border-radius: 10px;
 	box-shadow: 1px 1px 6px var(--shadows);
 	text-align: left;
-	height: 20rem;
+	height: auto;
 }
 
 .filter-box {
@@ -107,7 +109,7 @@ h1 {
 	border-radius: 10px;
 	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 	height: 15rem;
-
+	width: auto;
 	text-overflow: unset;
 
 	&:hover {
@@ -130,10 +132,11 @@ h1 {
 
 .resetButton {
 	color: var(--textColor);
-	position: absolute;
-	bottom: 1rem;
+	grid-column:  2;
 	background-color: var(--main);
 	padding: .3rem;
+	width: 7rem;
+	margin: auto;
 	font-size: 1rem;
 	border-radius: 10px;
 	border-color: var(--main);
@@ -153,9 +156,6 @@ h1 {
 }
 
 .thumbnail {
-	display: flex;
-	/*Display flex pour faire apparaitre*/
-	flex-direction: column;
 	margin: 20px;
 	width: 350px;
 	height: 350px;
@@ -263,15 +263,19 @@ p {
 	margin: 20px 0;
 }
 
-.thumbnail-popup {
-	display: none;
-}
+/* footer {
 
-footer {
 	background-color: var(--main);
 	justify-items: center;
 	margin-top: 3rem;
-}
+	margin-top: 20px;
+	color: rgb(8, 8, 8);
+	padding: 1rem;
+	display: flex;
+	justify-content: space-between;
+	text-align: center;
+	height: 3rem;
+} */
 
 /*FIN DU DESKTOP/MOBILE */
 
@@ -286,138 +290,30 @@ footer {
 		margin-right: 1rem;
 	}
 
-	.thumbnail-popup {
+	.filters {
+		grid-template-columns: 1fr; /* Un filtre par ligne */
+		gap: 1rem !important;
+		min-width: 15rem;
+	}
+	.filter-box{
+		text-align: center;
+	}
+	.filter-box ul {
 		display: none;
-		/* flex pour faire apparaitre / none pour ne pas afficher*/
-		flex-direction: column;
-		background-color: var(--second);
-		transition: opacity 0.7s;
-		margin: auto;
 	}
-
-	.thumbnail-popup-top {
-		display: flex;
-		flex-direction: column;
-		margin: 0 0 20px 0;
+	.filter-box {
+		height: 3.5rem !important;
 	}
-
-	.cancel {
-		position: absolute;
-		right: 5%;
-		top: 1%;
-		fill: #000;
-		margin: auto;
-		display: flex;
-		width: 36px;
+	._filter-box:hover ul {
+		display: block;
 	}
-
-	.thumbnail-popup-grid {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		grid-template-rows: repeat(8, 1fr);
-		height: 90%;
-		width: 100%;
-		margin: auto;
+	._filter-box:hover {
+		height: 17rem;
 	}
-
-	.img-popup {
-		object-fit: cover;
-		width: 100%;
-		height: 200px;
-	}
-
-	/* .map {
-        width: 100%;
-        height: 200px;
-        margin:0 0 30px 0; */
-
-	.resto-type-popup {
-		grid-column: 1;
-		grid-row: 1;
-		margin: 0 0 35px;
-	}
-
-	.resto-stars-popup {
-		display: flex;
-		justify-content: center;
-		margin: 0;
-		padding: 0 10px;
-		background-size: contain;
-		background-repeat: no-repeat;
-		grid-column: 3;
-		grid-row: 1;
-	}
-
-	.resto-stars-WCS-popup {
-		padding: 0;
-		margin: 3px 5px;
-		width: auto;
-		height: 14px;
-	}
-
-	.resto-name-popup {
-		grid-column: 1 / span 2;
-		grid-row: 3;
-		padding: 10px;
-	}
-
-	.resto-adress-popup {
-		grid-column: 1 / span 2;
-		grid-row: 3;
-		padding: 10px;
-	}
-
-	.resto-phone-popup {
-		grid-column: 1;
-		grid-row: 4;
-		padding: 10px;
-	}
-
-	.resto-price-popup {
-		grid-column: 3;
-		grid-row: 4;
-		display: flex;
-		justify-content: center;
-		padding: 0 10px;
-	}
-
-	.resto-pic-popup {
-		display: flex;
-		margin: 20px auto;
-		grid-column: 3;
-		grid-row: 8;
-	}
-
-	.resto-advice-popup {
-		display: flex;
-		justify-content: center;
-		margin: 20px auto;
-		grid-column: 1;
-		grid-row: 8;
-	}
-
-	#advices-popup {
-		display: none;
-		/* flex pour faire apparaitre / none pour ne pas afficher*/
-		flex-direction: column;
-		justify-content: center;
-		align-content: center;
-		margin: 30px auto;
-		padding: 20px 0;
-		width: 100%;
+	.resetButton {
+		grid-column: auto;
 	}
 }
-
-/* @media only screen and (min-width: 480px) {
-    header {
-        justify-content: space-between;
-    }
-
-    .brandName {
-        margin-right: 1rem;
-    }
-} */
-
 /* carousel */
 .carousel {
 	height: 170px;
@@ -466,4 +362,3 @@ footer {
 	height: 100%;
 	width: 100%;
 }
-
