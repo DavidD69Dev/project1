@@ -7,15 +7,9 @@
 :root {
 	--main: #2096d8;
 	--second: #fdedf2;
-	--texColor: rgb(255, 255, 255);
+	--textColor: rgb(0, 0, 0);
 	--shadows: rgb(52, 52, 52);
 }
-.darkGreen {
-	 --main: #094106; 
-	 --second: #1e1e1e; 
-	 --textColor: #d6d6d6; 
-	 --shadows: rgb(129, 127, 127);
-	}
 body {
 	font-family: "Montserrat", sans-serif;
 	background-color: var(--second);
@@ -303,7 +297,7 @@ footer {
 
 /* POP-UP - DÉBUT*/
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 768px) {
 	header {
 		justify-content: space-between;
 	}
